@@ -3,6 +3,7 @@ import React from "react";
 
 import ListTodo from "./ListTodo";
 import './Todos.css'
+import TodoForm from "./TodoForm";
 
 const baseURL = 'http://localhost:8080/todos'
 
@@ -25,11 +26,11 @@ const Todos = () => {
     return (
         <div className="todo-container">
             <div className="todos">
-                {/*TODO: Create a new component to add new todos*/}
+                <TodoForm />
             </div>
             <div className="todos">
                 <h1>Open Todos</h1>
-                <ListTodo todos={openTodos}/>
+                <ListTodo todos={openTodos.reverse()}/>
             </div>
             <div className="todos">
                 <h1>Closed Todos</h1>
