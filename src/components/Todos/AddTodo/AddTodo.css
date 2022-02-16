@@ -1,0 +1,12 @@
+.form-control {
+  padding: 2px;
+  font-size: 17.5pt;
+}
+
+.btn {
+  background-color: #007bff;
+  border: 1px transparent;
+  color: white;
+  padding: 4px;
+  font-size: 17pt;
+}
