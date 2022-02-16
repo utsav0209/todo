@@ -16,6 +16,7 @@ const Todo = ({title, status}) => {
             </span>
             <span className="todo-status">
                 {/*TODO: Create a re-usable checkbox here to indicate status*/}
+                {/*TODO: The checkbox should be able to change the status of the todo*/}
                 {status}
             </span>
         </div>
