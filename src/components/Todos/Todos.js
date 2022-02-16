@@ -25,7 +25,6 @@ const Todos = ({reloadApp}) => {
     }, [reloadApp])
 
     const toggleTodo = (todo) => {
-        console.log(todo)
         if (todo.status === 'CLOSED') {
             const openTodosClone = [...openTodos]
             const index = openTodosClone.indexOf(t => t.id === todo.id)

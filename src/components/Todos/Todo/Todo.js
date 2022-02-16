@@ -18,9 +18,6 @@ const Todo = ({title, status, onClick}) => {
             <span className="todo-status">
 
                 <CheckBox checked={status === 'OPEN'} onClick={onClick}/>
-
-                {/*TODO: Create a re-usable checkbox here to indicate status*/}
-                {/*TODO: The checkbox should be able to change the status of the todo*/}
                 {status}
             </span>
         </div>

@@ -1,9 +1,5 @@
 import './App.css';
 import Todos from "./components/Todos";
-import CreateTodo from "./components/Todos/CreateTodo";
-import {useState} from "react";
-
-
 
 function App() {
 
