@@ -1,21 +1,37 @@
+import { useState, useEffect } from "react";
+import "./Todos.css";
 import ListTodo from "./ListTodo";
-import './Todos.css'
 
 const Todos = () => {
-    // TODO: Fetch todos from micronaut backend
-    const todos = [
-        {id: 1, title: "Todo 1", status: "OPEN"},
-        {id: 2, title: "Todo 2", status: "CLOSED"}
-    ]
+  const [openTodos, setOpenTodos] = useState([]);
+  const [closedTodos, setClosedTodos] = useState([]);
 
-    return (
-        <div className="todo-container">
-            <div className="todos">
-                {/*TODO: Create a new component to add new todos*/}
-                <ListTodo todos={todos}/>
-            </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const response = await fetch("http://127.0.0.1:8080/todos/open");
+      const todosData = await response.json();
+      setOpenTodos(todosData);
+    };
+    fetchTodos();
+  }, []);
 
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const response = await fetch("http://127.0.0.1:8080/todos/closed");
+      const todosData = await response.json();
+      setClosedTodos(todosData);
+    };
+    fetchTodos();
+  }, []);
+
+  return (
+    <div className="todo-container">
+      <div className="todos">
+        {/*TODO: Create a new component to add new todos*/}
+        <ListTodo todos={openTodos} />
+        <ListTodo todos={closedTodos} />
+      </div>
+    </div>
+  );
+};
 export default Todos;
