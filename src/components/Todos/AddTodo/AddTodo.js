@@ -1,6 +1,11 @@
 import './AddTodo.css';
 import {useState} from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
+
+const AddTodoPropsType = PropTypes.shape({
+    handleAddTodo: PropTypes.func
+});
 
 const AddTodo = ({handleAddTodo}) => {
     const [title, setTitle] = useState("");
@@ -39,4 +44,7 @@ const AddTodo = ({handleAddTodo}) => {
     );
 };
 
+AddTodo.prototype = AddTodoPropsType;
+
+export {AddTodoPropsType};
 export default AddTodo;
