@@ -27,15 +27,14 @@ const Todos = ({reloadApp}) => {
     const toggleTodo = (todo) => {
         if (todo.status === 'CLOSED') {
             const openTodosClone = [...openTodos]
-            const index = openTodosClone.indexOf(t => t.id === todo.id)
-            openTodosClone.splice(index, 1)
-            setOpenTodos(openTodosClone)
+            const filteredOpenTodos = openTodosClone.filter(t => t.id !== todo.id)
+            console.log(filteredOpenTodos)
+            setOpenTodos(filteredOpenTodos)
             setClosedTodos([...closedTodos, todo])
         } else if (todo.status === 'OPEN'){
             const closedTodosClone = [...closedTodos]
-            const index = closedTodosClone.indexOf(t => t.id === todo.id)
-            closedTodosClone.splice(index, 1)
-            setClosedTodos(closedTodosClone)
+            const filteredClosedTodos = closedTodosClone.filter(t => t.id !== todo.id)
+            setClosedTodos(filteredClosedTodos)
             setOpenTodos([...openTodos, todo])
         }
     }
