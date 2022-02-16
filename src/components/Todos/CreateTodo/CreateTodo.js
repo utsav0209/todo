@@ -12,7 +12,7 @@ const createTodo = async (todo) => {
     return await response.json()
 }
 
-const CreateTodo = ({reloadApp, setReloadApp}) => {
+const CreateTodo = ({setOpenTodos}) => {
     const [title, setTitle] = React.useState('')
 
     const onTitleChange = (event) => {
@@ -21,8 +21,8 @@ const CreateTodo = ({reloadApp, setReloadApp}) => {
 
     const onSubmit = async (event) => {
         event.preventDefault()
-        await createTodo({title: title, status: 'OPEN'})
-        setReloadApp(reloadApp + 1)
+        const todo = await createTodo({title: title, status: 'OPEN'})
+        setOpenTodos(openTodos => ([...openTodos, todo]))
     }
 
     return (
