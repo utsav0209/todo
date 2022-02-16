@@ -23,17 +23,34 @@ const Todos = () => {
         setOpenTodos([todo, ...openTodos]);
     };
 
-    handleAddTodo.bind(this);
+    const updateTodo = (updatedTodo) => {
+
+        if (updatedTodo.status === "OPEN") {
+            removeFromClosedTodos(updatedTodo.id);
+            setOpenTodos([updatedTodo, ...openTodos]);
+        } else {
+            removeFromOpenTodos(updatedTodo.id);
+            setClosedTodos([updatedTodo, ...closedTodos]);
+        }
+    };
+
+    const removeFromOpenTodos = (id) => {
+        setOpenTodos(openTodos.filter(todo => todo.id !== id));
+    };
+
+    const removeFromClosedTodos = (id) => {
+        setClosedTodos(closedTodos.filter(todo => todo.id !== id));
+    }
+
 
     return (
         <div className="todo-container">
-            <AddTodo handleAddTodo={handleAddTodo} />
+            <AddTodo handleAddTodo={handleAddTodo}/>
 
-            {openTodos.length < 1 && <div>Loading...</div>}
+            {(openTodos.length + closedTodos.length) < 1 && <div>Loading...</div>}
 
             <div className="todos">
-                {/*TODO: Create a new component to add new todos*/}
-                <ListTodo todos={[...openTodos, ...closedTodos]}/>
+                <ListTodo todos={[...openTodos, ...closedTodos]} updateTodo={updateTodo}/>
             </div>
         </div>
     )
