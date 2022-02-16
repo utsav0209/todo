@@ -7,8 +7,7 @@ const fetchTodos = async type => {
     return await response.json()
 }
 
-const Todos = () => {
-
+const Todos = ({reloadApp}) => {
     const [openTodos, setOpenTodos] = React.useState([])
     const [closedTodos, setClosedTodos] = React.useState([])
     const [isLoading, setIsLoading] = React.useState(true)
@@ -22,7 +21,7 @@ const Todos = () => {
             setIsLoading(false)
         }
         init()
-    }, [])
+    }, [reloadApp])
 
     if (isLoading)
         return (<div>Loading...</div>)
