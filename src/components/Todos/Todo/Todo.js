@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import './Todo.css';
+import CheckBox from "../../common/checkbox";
 
 const TodoPropType = PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -8,15 +9,15 @@ const TodoPropType = PropTypes.shape({
     status: PropTypes.oneOf(['OPEN', 'CLOSED'])
 })
 
-const Todo = ({title, status}) => {
+const Todo = ({title, status, onClick}) => {
     return (
         <div className="todo-pill">
             <span className="todo-title">
                 {title}
             </span>
             <span className="todo-status">
-                {/*TODO: Create a re-usable checkbox here to indicate status*/}
-                {/*TODO: The checkbox should be able to change the status of the todo*/}
+
+                <CheckBox checked={status === 'OPEN'} onClick={onClick}/>
                 {status}
             </span>
         </div>
@@ -25,5 +26,5 @@ const Todo = ({title, status}) => {
 
 Todo.prototype = TodoPropType;
 
-export { TodoPropType };
+export {TodoPropType};
 export default Todo;
