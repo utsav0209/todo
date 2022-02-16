@@ -4,7 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 
 const AddTodoPropsType = PropTypes.shape({
-    handleAddTodo: PropTypes.func
+    handleAddTodo: PropTypes.func.isRequired
 });
 
 const AddTodo = ({handleAddTodo}) => {
