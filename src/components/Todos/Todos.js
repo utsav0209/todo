@@ -2,10 +2,9 @@ import ListTodo from "./ListTodo";
 import './Todos.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
+import AddTodo from "./AddTodo/AddTodo";
 
 const Todos = () => {
-    // TODO: Fetch todos from micronaut backend
-
     let [openTodos, setOpenTodos] = useState([]);
     let [closedTodos, setClosedTodos] = useState([]);
 
@@ -20,9 +19,16 @@ const Todos = () => {
         fetchTodos();
     }, []);
 
+    const handleAddTodo = (todo) => {
+        setOpenTodos([todo, ...openTodos]);
+    };
+
+    handleAddTodo.bind(this);
 
     return (
         <div className="todo-container">
+            <AddTodo handleAddTodo={handleAddTodo} />
+
             {openTodos.length < 1 && <div>Loading...</div>}
 
             <div className="todos">
