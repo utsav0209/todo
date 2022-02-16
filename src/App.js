@@ -8,7 +8,7 @@ function App() {
                 My To-Do App
             </div>
             <div className="App-body">
-               <Todos />
+                <Todos/>
             </div>
             <div className="App-footer">
                 Developed at Incubyte
